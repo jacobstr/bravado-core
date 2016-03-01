@@ -185,6 +185,11 @@ def test_string_enum_success(minimal_swagger_spec, string_spec):
     validate_primitive(minimal_swagger_spec, string_spec, 'dinky')
 
 
+def test_string_enum_not_required(minimal_swagger_spec, string_spec):
+    string_spec['enum'] = ['inky', 'dinky', 'doo']
+    validate_primitive(minimal_swagger_spec, string_spec, None)
+
+
 def test_string_enum_failure(minimal_swagger_spec, string_spec):
     string_spec['enum'] = ['inky', 'dinky', 'doo']
     with pytest.raises(ValidationError) as excinfo:
